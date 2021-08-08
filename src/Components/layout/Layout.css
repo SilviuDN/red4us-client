@@ -1,0 +1,14 @@
+/* .navbarMenu{
+    margin-bottom: 11em;
+} */
+
+.myUglyFooter{
+    background: grey;
+    color: white;
+    text-align: center;
+    font-size: .7em;
+    position: fixed;
+    bottom: 0;
+    padding: 5px;
+    width: 100%;
+}

@@ -1,0 +1,14 @@
+.strikethrough{
+    text-decoration: line-through;
+    color: red;
+}
+
+.cardImage{
+    margin-bottom: 1em ;
+}
+
+.phoneCardImage{
+  height: 15em;
+  object-fit: cover;
+  width: 100%;
+}
