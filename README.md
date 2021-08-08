@@ -4,12 +4,18 @@
 - red4me is a simple app that wants to be a "smartPhones - happyUsers matching" online store, when it grows up...
 
 ## Getting started:
+### Remote:
+- deployed with Heroku: https://elegant-mestorf-c094ac.netlify.app/
 ### Locally: 
+server( optional ):
+- clone the repo <$ https://github.com/SilviuDN/red4us.git>
+- client: npm i
+- client: npm run dev
+client:
 - clone the repo <$ https://github.com/SilviuDN/red4us-client.git>
 - client: npm i
 - client: npm start
-### Remote (available soon):
-- deployed with Heroku: https://red4me.herokuapp.com/ 
+
 
 ## Data persistency:
 - MongoAtlass for the db
