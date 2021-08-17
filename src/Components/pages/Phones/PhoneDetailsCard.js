@@ -21,10 +21,11 @@ const PhoneDetailsCard = ({name, manufacturer, description, color, price, screen
 
             </Card.Body>
         </Card>
-        <Link to = {`/phones/`} >
+
+        {/* <Link to = {`/phones/`} >
             <Button size="lg" variant="primary">Back to Phones list</Button>
         </Link>
-        <Link className='btn btn-primary lg' to = {`/`} >Back to Index</Link>
+        <Link className='btn btn-primary lg' to = {`/`} >Back to Index</Link> */}
         </Col>
     )
 }

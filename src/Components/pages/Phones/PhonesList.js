@@ -10,7 +10,7 @@ class PhonesList extends Component{
         super()
         this.state = {
             phones: undefined,
-            modal: false,
+            // modal: false,
         }
         this.phonesService = new PhonesService()
     }

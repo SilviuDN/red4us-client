@@ -5,7 +5,7 @@ import PhonesService from "../../../services/phones.service";
 import UploadsService from "../../../services/uploads.service";
 import Spinner from "../../shared/Spinner/Spinner";
 
-class PhoneForm extends Component{
+class PhoneFormEdit extends Component{
     constructor(){
         super()
         this.state={
@@ -40,36 +40,37 @@ class PhoneForm extends Component{
         e.preventDefault()
 
         this.phonesService
-            .newPhone(this.state.phone)
-            .then( (res) => {
-                this.setState({
-                    phone:{
-                        name: "",
-                        manufacturer: '',
-                        description: '',
-                        color: '',
-                        price: '',
-                        imageFileName: '',
-                        screen: '',
-                        processor: '',
-                        ram: '',
-                    },
-                    loading: false,
+            .editPhone(this.props.match.params.phone_id ,this.state.phone)
+            .then(res => {
+            // .then( (res) => {
+            //     this.setState({
+            //         phone:{
+            //             name: "",
+            //             manufacturer: '',
+            //             description: '',
+            //             color: '',
+            //             price: '',
+            //             imageFileName: '',
+            //             screen: '',
+            //             processor: '',
+            //             ram: '',
+            //         },
+            //         loading: false,
 
-                })
-                // this.props.refreshPhonesPage()
-                // this.props.closeNewPhoneModal()
+            //     })
+            //     // this.props.refreshPhonesPage()
+            //     // this.props.closeNewPhoneModal()
 
-                if (this.props.refreshPhonesPage) {
-                    this.props.refreshPhonesPage()
-                }
-                if (this.props.closeNewPhoneModal) {
-                    this.props.closeNewPhoneModal()
-                }
+            //     if (this.props.refreshPhonesPage) {
+            //         this.props.refreshPhonesPage()
+            //     }
+            //     if (this.props.closeNewPhoneModal) {
+            //         this.props.closeNewPhoneModal()
+            //     }
                 if (this.props.history) {
                     this.props.history.push('/phones')
                 }
-                // this.props?.history?.push('/phones')
+            //     // this.props?.history?.push('/phones')
 
             })
             .catch(err => console.log(err))
@@ -93,8 +94,40 @@ class PhoneForm extends Component{
             .catch(err => console.log(err))
     }
 
+    loadPhone(){
+        const phone_id = this.props.match.params.phone_id
+        
+        this.phonesService
+            .getPhone(phone_id)
+            .then(response => {
+                this.setState({
+                    phone:{
+                        
+                    ...this.state.phone,
+                    name: response.data.name,
+                    manufacturer: response.data.manufacturer,
+                    description: response.data.description,
+                    color: response.data.color,
+                    price: response.data.price,
+                    imageFileName: response.data.imageFileName,
+                    screen: response.data.screen,
+                    processor: response.data.processor,
+                    ram: response.data.ram,
+                }
+                })
+                console.log(this.state)
+            })
+            .catch(err => console.log(err))
+    }
+
+    componentDidMount = () => this.loadPhone()
+    
+    // componentDidUpdate = (prevProps, prevState) => prevState.phone.name != this.state.phone.name && this.loadPhone()
+    
+
 
     render(){
+        console.log('**************************')
 
         return(
             <Container>
@@ -134,11 +167,6 @@ class PhoneForm extends Component{
                     <Form.Control name="imageFile" type="file" onChange={this.handleFileUpload}/>
                 </Form.Group>
 
-                {/* <Form.Group className="mb-3" controlId="imageFileName">
-                    <Form.Label>Image:</Form.Label>
-                    <Form.Control name="imageFileName" type="text" placeholder="Product image" value={this.state.imageFileName} onChange={this.handleInputChange}/>
-                </Form.Group> */}
-
                 <Form.Group className="mb-3" controlId="screen">
                     <Form.Label>Screen</Form.Label>
                     <Form.Control name="screen" type="text" placeholder="Product screen" value={this.state.phone.screen} onChange={this.handleInputChange}/>
@@ -156,7 +184,7 @@ class PhoneForm extends Component{
                 
                 <Button variant="primary" type="submit" disabled={this.state.loading}>            
                     {this.state.loading ? <Spinner size={30}/>  : null}
-                    {this.state.loading ? 'Uploading image'  : 'Add New Product'}
+                    {this.state.loading ? 'Uploading image'  : 'Edit Product'}
                 </Button>
 
                 <Button variant="secondary" onClick={this?.props?.closeNewPhoneModal}>
@@ -169,4 +197,4 @@ class PhoneForm extends Component{
     }
 }
 
-export default PhoneForm
+export default PhoneFormEdit

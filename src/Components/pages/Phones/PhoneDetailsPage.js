@@ -1,13 +1,17 @@
 import { Component } from "react"
+import { Container, Button, Modal } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 import PhonesService from "../../../services/phones.service"
 import PhoneDetailsCard from "./PhoneDetailsCard"
+import PhoneFormEdit from "./PhoneFormEdit"
 
 class PhoneDetails extends Component{
     constructor(){
         super()
         this.state = {
-            phone: undefined
+            phone: undefined,
+            modal: true,
         }
         this.phonesService = new PhonesService()
     }
@@ -23,6 +27,22 @@ class PhoneDetails extends Component{
 
     }
 
+    closeNewPhoneModal = () => {
+        this.setState({
+            modal: false
+        })
+    }
+
+    openNewPhoneModal = () => {
+        this.setState({
+            modal: true
+        })
+    }
+
+    refreshPhonesPage = () => {
+        this.props?.history?.push(`/phones/${this.props.phone_id}`)
+    }
+
 
 
     render(){
@@ -32,7 +52,30 @@ class PhoneDetails extends Component{
             ?
             <h2>Getting phone info</h2>
             :
-            <PhoneDetailsCard {...this.state.phone}/>
+            <Container>
+
+                {/* <Button variant="secondary" onClick={this.openNewPhoneModal}>
+                    Edit Phone Modal
+                </Button> */}
+
+                <PhoneDetailsCard {...this.state.phone}/>
+
+
+                <Link className="btn btn-success" to = {`/phones/${this.state.phone._id}/edit`} >Edit Phone</Link>
+
+                {/* <Modal show={this.state.modal} onHide={this.closeNewPhoneModal}>
+
+                    <Modal.Header closeButton>
+                        <Modal.Title>Edit Phone</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <PhoneFormEdit closeNewPhoneModal={this.closeNewPhoneModal}  refreshPhonesPage = {this.refreshPhonesPage}  phone ={ this.state.phone}/>
+                    </Modal.Body>
+
+                </Modal> */}
+            </Container>
+            
         )
     }
 }

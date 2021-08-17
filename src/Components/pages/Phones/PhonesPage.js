@@ -36,16 +36,12 @@ class PhonesPage extends Component{
 render(){    
     return(
         <Container>
-
-            {/* <Link to = {`/`} >
-                    <Button variant="primary">Index Page</Button>
-            </Link>
-            <Link className="btn btn-success" to = {`/phones/new`} >New Phone</Link> */}
             <Button variant="secondary" onClick={this.openNewPhoneModal}>
                 New Phone Modal
             </Button>
 
-            <PhonesList key={this.state.modal}/>
+            <PhonesList/>
+            {/* <PhonesList key={this.state.modal}/> */}
             
 
             <Modal show={this.state.modal} onHide={this.closeNewPhoneModal}>
@@ -59,14 +55,14 @@ render(){
 
                 </Modal.Body>
 
-                <Modal.Footer>
+                {/* <Modal.Footer>
                 <Button variant="secondary" onClick={this.closeNewPhoneModal}>
                     Close
                 </Button>
                 <Button variant="primary" onClick={this.closeNewPhoneModal}>
                     Save Changes
                 </Button>
-                </Modal.Footer>
+                </Modal.Footer> */}
 
             </Modal>
 
