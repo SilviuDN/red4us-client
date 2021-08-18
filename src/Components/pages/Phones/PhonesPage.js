@@ -36,11 +36,15 @@ class PhonesPage extends Component{
 render(){    
     return(
         <Container>
-            <Button variant="secondary" onClick={this.openNewPhoneModal}>
-                New Phone Modal
-            </Button>
+            {
+                this.props.loggedUser 
+                &&
+                <Button variant="secondary" onClick={this.openNewPhoneModal}>
+                    New Phone Modal
+                </Button>
+            }
 
-            <PhonesList/>
+            <PhonesList />
             {/* <PhonesList key={this.state.modal}/> */}
             
 

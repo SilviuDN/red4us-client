@@ -6,6 +6,7 @@ class PhonesService{
         this.app = axios.create({
             // baseURL: 'http://localhost:5000/phones'
             baseURL: process.env.REACT_APP_BASE_URL + '/phones',
+            withCredentials: true
         })
     }
 

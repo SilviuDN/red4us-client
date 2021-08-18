@@ -1,5 +1,4 @@
 import { Component } from "react";
-import {Link} from 'react-router-dom'
 import {Form, Button, Container} from 'react-bootstrap'
 import PhonesService from "../../../services/phones.service";
 import UploadsService from "../../../services/uploads.service";

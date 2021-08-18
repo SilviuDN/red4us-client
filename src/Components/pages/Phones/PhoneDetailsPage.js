@@ -1,10 +1,9 @@
 import { Component } from "react"
-import { Container, Button, Modal } from 'react-bootstrap'
+import { Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 import PhonesService from "../../../services/phones.service"
 import PhoneDetailsCard from "./PhoneDetailsCard"
-import PhoneFormEdit from "./PhoneFormEdit"
 
 class PhoneDetails extends Component{
     constructor(){

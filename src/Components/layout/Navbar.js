@@ -2,7 +2,22 @@ import {Navbar, Nav, Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import './Layout.css'
 
-const NavbarMenu = () => {
+import AuthService from '../../services/auth.service'
+
+const NavbarMenu = ({storeUser, loggedUser}) => {
+
+    const authService = new AuthService()
+
+    const logout = () => {
+        authService
+            .logout()
+            .then( res =>{
+                storeUser(undefined)
+                // this.props.history.push('/phones')
+                console.log(res)  
+            } )
+            .catch( err => console.log(err))
+    }
 
     return(
         <Navbar bg="light" expand="md" fixed="top" className="navbarMenu">
@@ -15,8 +30,20 @@ const NavbarMenu = () => {
                     <Link to="/phones" className="nav-link">Phones</Link>
                 </Nav>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">SignUp</Nav.Link>
-                    <Nav.Link href="#link">LogIn</Nav.Link>
+                {!loggedUser                     
+                    ? 
+                    <>
+                        <Nav.Link href="/signup">SignUp</Nav.Link>
+                        <Nav.Link href="/login">LogIn</Nav.Link>
+                    </>
+                    :
+                    <>
+                        <Link className='nav-link' to='myProfile'>MyProfile</Link>
+                        <span className='nav-link' onClick={logout}>Logout</span>
+                    </>
+
+                }
+                    <span className='nav-link'>Hi, {loggedUser ? loggedUser.username : 'Stranger'}!</span>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -1,5 +1,4 @@
-import{Card, Button, Col} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import{Card, Col} from 'react-bootstrap'
 import './Phones.css'
 
 const PhoneDetailsCard = ({name, manufacturer, description, color, price, screen, processor, ram, imageFileName, _id}) => {
