@@ -5,7 +5,7 @@
 
 ## Getting started:
 ### Remote:
-- deployed with Heroku: https://elegant-mestorf-c094ac.netlify.app/
+- deployed with Netlify: https://elegant-mestorf-c094ac.netlify.app/
 ### Locally: 
 server( optional ):
 - clone the repo <$ https://github.com/SilviuDN/red4us.git>
@@ -31,7 +31,6 @@ client:
 
 ## Backend:
 - deployed with heroku
-- for full app see: https://github.com/SilviuDN/red4me.git
 
 ## Components: 
 - App
