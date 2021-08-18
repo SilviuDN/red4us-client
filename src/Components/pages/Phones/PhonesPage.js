@@ -55,7 +55,7 @@ render(){
 
                 <Modal.Body>
 
-                    <PhoneForm closeNewPhoneModal={this.closeNewPhoneModal}  refreshPhonesPage = {this.refreshPhonesPage}/>
+                    <PhoneForm closeNewPhoneModal={this.closeNewPhoneModal}  refreshPhonesPage = {this.refreshPhonesPage}   showAlert={this.props.showAlert}/>
 
                 </Modal.Body>
 

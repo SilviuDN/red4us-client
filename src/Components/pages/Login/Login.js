@@ -29,9 +29,10 @@ class Login extends Component{
             .login(this.state.username, this.state.pwd)
             .then( (loggedUser) => {
                 this.props.storeUser(loggedUser.data)
+                this.props.showAlert( `Welcome, ${loggedUser.data.username}!\nSuccesfully logged in!`, 'success')
                 this.props.history.push('/phones')
             } )
-            .catch( err => console.log(err))
+            .catch( err => this.props.showAlert( err.response.data.message, 'danger'))
 
 
     }

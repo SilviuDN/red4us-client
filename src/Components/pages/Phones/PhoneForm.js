@@ -38,9 +38,22 @@ class PhoneForm extends Component{
     handleFormSubmit = (e) => {
         e.preventDefault()
 
+        let isFormComplete = true
+        for(let key in this.state.phone){
+            isFormComplete = key !== 'imageFileName' && this.state.phone[key] === undefined ? false : isFormComplete
+        }
+
+
+        if(isFormComplete===false){
+            // throw 'All fields are mandatory.'
+            this.props.showAlert( 'All fields are mandatory.', 'danger')
+        }else{
+
+
         this.phonesService
             .newPhone(this.state.phone)
-            .then( (res) => {
+            .then( (res) => {     
+
                 this.setState({
                     phone:{
                         name: "",
@@ -68,10 +81,12 @@ class PhoneForm extends Component{
                 if (this.props.history) {
                     this.props.history.push('/phones')
                 }
-                // this.props?.history?.push('/phones')
+                this.props.showAlert( 'Phone successfully inserted!', 'success')
 
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log({err}))
+            // .catch(err => this.props.showAlert( err.response.data.message, 'danger'))
+        }
     }
 
 

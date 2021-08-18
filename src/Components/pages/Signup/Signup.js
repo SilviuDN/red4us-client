@@ -27,8 +27,11 @@ class Signup extends Component{
 
         this.authService
             .signup(this.state.username, this.state.pwd)
-            .then( () => this.props.history.push('/login'))
-            .catch( err => console.log(err))
+            .then( () => {
+                this.props.showAlert( `Welcome, ${this.state.username}!\nYou can logIn, now!`, 'success')
+                this.props.history.push('/login')
+            } )
+            .catch( err => this.props.showAlert( err.response.data.message, 'danger'))
 
 
     }

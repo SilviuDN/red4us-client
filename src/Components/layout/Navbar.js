@@ -4,7 +4,7 @@ import './Layout.css'
 
 import AuthService from '../../services/auth.service'
 
-const NavbarMenu = ({storeUser, loggedUser}) => {
+const NavbarMenu = ({storeUser, loggedUser, showAlert}) => {
 
     const authService = new AuthService()
 
@@ -13,8 +13,8 @@ const NavbarMenu = ({storeUser, loggedUser}) => {
             .logout()
             .then( res =>{
                 storeUser(undefined)
+                showAlert('You just logged out. Good bye!', 'warning')
                 // this.props.history.push('/phones')
-                console.log(res)  
             } )
             .catch( err => console.log(err))
     }
