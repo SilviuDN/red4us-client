@@ -13,9 +13,9 @@ const Routes = ({storeUser, loggedUser, showAlert}) => {
     return(
         <Switch>
             <Route path = '/' exact render = { () => <IndexPage/> } />
-            <Route path = '/phones' exact render = { () => <PhonesPage loggedUser={loggedUser}  showAlert={showAlert}/>} />
+            <Route path = '/phones' exact render = { () => <PhonesPage loggedUser={loggedUser} showAlert={showAlert}/>} />
             <Route path = '/phones/new' render = { () => <PhoneForm  showAlert={showAlert}/>} />
-            <Route path = '/phones/:phone_id' exact render = { (props) => <PhoneDetailsPage {...props}/>} />
+            <Route path = '/phones/:phone_id' exact render = { (props) => <PhoneDetailsPage {...props}  loggedUser={loggedUser}/>} />
             <Route path = '/phones/:phone_id/edit' render = { (props) => <PhoneFormEdit {...props}/>} />
             <Route path = '/signup' render = { props => <Signup {...props} showAlert={showAlert}/>} />
             <Route path = '/login' render = { props => <Login {...props} storeUser={storeUser} showAlert={showAlert}/>}/>

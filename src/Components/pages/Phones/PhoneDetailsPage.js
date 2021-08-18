@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { Container} from 'react-bootstrap'
+import { Container, Button, Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
 import PhonesService from "../../../services/phones.service"
@@ -59,8 +59,31 @@ class PhoneDetails extends Component{
 
                 <PhoneDetailsCard {...this.state.phone}/>
 
+                <Row>
+                    <Col  md={{ span:4, offset:4 }}>
 
-                <Link className="btn btn-success" to = {`/phones/${this.state.phone._id}/edit`} >Edit Phone</Link>
+                        {
+                            this.props.loggedUser?._id === this.state.phone.owner 
+                            ? 
+                            <>
+                            <Link to = {`/phones/${this.state.phone._id}/edit`} >
+                                <Button variant="warning">Edit Phone</Button>
+                            </Link>
+
+                            {/* <Link to = {`/phones/${this.state.phone._id}/delete`} >
+                                <Button variant="danger">Delete Phone</Button>
+                            </Link> */}
+                            </>
+                            :
+                            null
+                        }  
+                    
+                    </Col>
+
+                </Row>
+
+
+                    {/* <Link className="btn btn-success" to = {`/phones/${this.state.phone._id}/edit`} >Edit Phone</Link> */}
 
                 {/* <Modal show={this.state.modal} onHide={this.closeNewPhoneModal}>
 

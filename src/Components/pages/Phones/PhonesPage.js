@@ -44,7 +44,7 @@ render(){
                 </Button>
             }
 
-            <PhonesList />
+            <PhonesList  loggedUser={this.props.loggedUser}/>
             {/* <PhonesList key={this.state.modal}/> */}
             
 

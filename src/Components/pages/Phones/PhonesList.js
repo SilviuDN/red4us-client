@@ -29,6 +29,20 @@ class PhonesList extends Component{
         this.loadPhones()
     }
 
+    deletePhone = phoneId => {
+
+        if (window.confirm('Are you sure you want to delete this phone?')) {
+
+            this.setState({
+                phones: this.state.phones.filter(elm => elm._id !== phoneId)
+            })
+
+            this.phonesService.deletePhone(phoneId)
+                .then(() => console.log('Airport deleted'))
+                .catch(err => console.log(err))
+        }
+    }
+
     render(){
         
         return (
@@ -44,7 +58,7 @@ class PhonesList extends Component{
             <hr></hr>
 
             <Row>
-                {this.state.phones.map(phone =>  <PhoneCard key={phone._id} {...phone}/>)}
+                {this.state.phones.map(phone =>  <PhoneCard key={phone._id} {...phone} loggedUser={this.props.loggedUser} deletePhone = {this.deletePhone}/>)}
             </Row>
             </>
             
