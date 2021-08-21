@@ -11,7 +11,7 @@ class PhonesService{
     }
 
     getPhones = () => this.app.get('/')
-    getPhone = phone_id => this.app.get(`phone/${phone_id}`)
+    getPhone = phone_id => this.app.get(`/phone${phone_id}`)
     newPhone = phone_info => this.app.post('/new', phone_info)
     editPhone = (phone_id, phone_info) => this.app.put(`/edit/${phone_id}`, phone_info)
     deletePhone = (phone_id) => this.app.delete(`/delete/${phone_id}`)
