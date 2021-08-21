@@ -33,12 +33,12 @@ const NavbarMenu = ({storeUser, loggedUser, showAlert}) => {
                 {!loggedUser                     
                     ? 
                     <>
-                        <Nav.Link href="/signup">SignUp</Nav.Link>
-                        <Nav.Link href="/login">LogIn</Nav.Link>
+                        <Link href="/signup">SignUp</Link>
+                        <Link href="/login">LogIn</Link>
                     </>
                     :
                     <>
-                        <Link className='nav-link' to='myProfile'>MyProfile</Link>
+                        <Link className='nav-link' to='/myProfile'>MyProfile</Link>
                         <span className='nav-link' onClick={logout}>Logout</span>
                     </>
 
