@@ -1,4 +1,4 @@
-# red4me v0.1.1
+# red4me v0.1.1 - the client
 
 ## The Idea:
 - red4me is a simple app that wants to be a "smartPhones - happyUsers matching" online store, when it grows up...
@@ -33,14 +33,7 @@
     - PhoneForm
     - Footer
 
-## Backend:
-
-### Data persistency:
-- MongoAtlass for the db
-- Cloudinary for the images
-
-### Server
-- deployed with heroku
-- to run it locally, see repo <$ https://github.com/SilviuDN/red4us.git>
+## For server:
+- see repo <$ https://github.com/SilviuDN/red4us.git>
 
 ## Enjoy!
